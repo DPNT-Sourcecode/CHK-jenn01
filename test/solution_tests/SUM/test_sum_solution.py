@@ -9,7 +9,7 @@ class TestSum:
     def test_sum_argument_not_integers(self):
         with pytest.raises(ValueError) as exception:
             SumSolution().compute(-1, 'a')
-        assert str(exception.value) == "Argument should be between 0 and 100"
+        assert str(exception.value) == "Arguments should be integers"
 
     def test_sum_out_of_range(self):
         with pytest.raises(ValueError) as value_exception:
