@@ -8,5 +8,3 @@ class TestCheckoutSolution:
     def test_checkout_solution_with_nonempty_skus(self):
         assert CheckoutSolution().checkout("AAABACCCDB") == 4
 
-
-

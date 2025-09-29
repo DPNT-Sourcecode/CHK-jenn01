@@ -5,6 +5,10 @@ class Product:
         self.sku = sku
         self.price = defaultdict(int)
 
+
+
+
+
 class CheckoutSolution:
 
     # skus = unicode string
@@ -15,7 +19,17 @@ class CheckoutSolution:
         skus = skus.upper()
         for sku in skus:
             group_items[sku] += sku
+        total = 0
+        for group, items in group_items.items():
+            print(group, items)
+            total += calculate_total(items)
+
         return len(group_items)
 
 
-
+    def calculate_total(items):
+        """
+        Calculate the total price of a group of items.
+        """
+        total = 0
+        return total
