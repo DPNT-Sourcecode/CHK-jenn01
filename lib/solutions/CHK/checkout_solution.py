@@ -1,14 +1,15 @@
 from collections import defaultdict
 
 class Product:
-    def __init__(self, sku):
+    def __init__(self, sku, price, offer):
         self.sku = sku
-        self.price = defaultdict(int)
-        self.offer = defaultdict(str)
+        self.price = price
+        self.offer = offer
 
 
 GOODS = defaultdict(Product)
 
+GOODS['A'] = Product('A', 20, "2A for 25")
 
 class CheckoutSolution:
 
