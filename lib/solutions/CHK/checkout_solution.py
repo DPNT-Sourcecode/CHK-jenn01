@@ -7,8 +7,9 @@ class CheckoutSolution:
     def checkout(self, skus):
         group_items = defaultdict(str)
         if not skus:
-            raise ValueError("Please provide skus")
+            return -1
         skus = skus.upper()
         for sku in skus:
             group_items[sku] += sku
         return len(group_items)
+
