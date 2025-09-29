@@ -5,4 +5,7 @@ class TestSum:
     def test_sum(self):
         assert SumSolution().compute(1, 2) == 3
 
+    def test_sum2(self):
+
+
 
