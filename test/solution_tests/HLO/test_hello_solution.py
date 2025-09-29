@@ -3,7 +3,7 @@ from lib.solutions.HLO.hello_solution import  HelloSolution
 
 class TestHelloSolution:
     def test_hello(self):
-        assert HelloSolution().hello("John") == "Hello, John!"
+        assert HelloSolution().hello("Mr. X") == "Hello, Mr. X!"
 
     def test_hello_with_empty_name(self):
         with pytest.raises(ValueError) as exception:
