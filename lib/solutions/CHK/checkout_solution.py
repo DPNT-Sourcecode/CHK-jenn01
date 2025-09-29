@@ -23,6 +23,14 @@ def apply_special_offers_for_new_good(skus):
     return skus
 
 
+def split_skus(skus, size):
+    """
+    Split a sku into smaller chunks of a specified size
+    """
+    s = [skus[i:i+size] for i in range(0, len(skus), size)]
+    return s
+
+
 def calculate_total_single_offer(sku, offer, items):
     nb_items_offered, value, total = 0, 0, 0
     split_offer = offer.split(" for ")
@@ -70,7 +78,6 @@ class CheckoutSolution:
         if sku not in GOODS:
             return -1
         offer = GOODS[sku].offer
-        total = 0
         if offer:
             if sku == "A":
                 total = calculate_total_multiple_offers(sku, offer, items)
