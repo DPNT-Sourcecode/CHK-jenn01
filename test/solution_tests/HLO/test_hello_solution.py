@@ -2,6 +2,7 @@ import pytest
 from lib.solutions.HLO.hello_solution import  HelloSolution
 
 class TestHelloSolution:
+
     def test_hello(self):
         assert HelloSolution().hello("Mr. X") == "Hello, World!"
 
@@ -13,6 +14,16 @@ class TestHelloSolution:
     def test_with_empty_not_string(self):
         with pytest.raises(ValueError) as exception:
             HelloSolution().hello(100)
+        assert str(exception.value) == "Please give a friend name as a string"
+
+    def test_hello_friend_with_empty_name(self):
+        with pytest.raises(ValueError) as exception:
+            HelloSolution().hello_friend("")
+        assert str(exception.value) == "Please provide friend name"
+
+    def test_hello_friend_with_empty_not_string(self):
+        with pytest.raises(ValueError) as exception:
+            HelloSolution().hello_friend(100)
         assert str(exception.value) == "Please give a friend name as a string"
 
     def test_hello_friend(self):
