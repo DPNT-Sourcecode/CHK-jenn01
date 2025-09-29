@@ -39,6 +39,8 @@ class CheckoutSolution:
         nb_items_offered, value = 0, 0
         if offer:
             split_offer = offer.split(" for ")
-            nb_items_offered += int(split_offer[0])
+            nb_items_offered = int(split_offer[0][:-1])
+            value = int(split_offer[1])
+
         total = len(items)
         return total
