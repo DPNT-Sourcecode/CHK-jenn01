@@ -15,3 +15,6 @@ class TestHelloSolution:
             HelloSolution().hello(100)
         assert str(exception.value) == "Please give a friend name as a string"
 
+    def test_hello_friend(self):
+        assert HelloSolution().hello_friend("Mr. X") == "Hello, Mr. X!"
+
