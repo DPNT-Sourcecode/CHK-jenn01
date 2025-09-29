@@ -17,6 +17,10 @@ GOODS['E'] = Product('E', 40, "2E get one B free")
 
 
 def apply_special_offers_for_new_good(skus):
+    """
+    Applies special offers for new skus to the list of products.
+    Presumably we have the new product E as provided
+    """
     nb_new_e = skus.count('E')
     nb_rewarded_b = 0 if nb_new_e else nb_new_e // 2
     skus +=  "B" * nb_rewarded_b
@@ -54,7 +58,8 @@ def calculate_total_multiple_offers(sku, offers, items):
     Presumably, we have only product having multiple offers.
     """
     offers = offers.split(", ")
-
+    for offer in offers:
+        pass
     return 0
 
 
@@ -95,5 +100,6 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
