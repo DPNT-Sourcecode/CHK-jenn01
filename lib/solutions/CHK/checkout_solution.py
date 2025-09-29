@@ -22,7 +22,7 @@ class CheckoutSolution:
             group_items[sku] += sku
         total = 0
         for sku, items in group_items.items():
-            print(sku, items)
+            # print(sku, items)
             total += self.calculate_total(sku, items)
 
         return len(group_items)
@@ -36,11 +36,12 @@ class CheckoutSolution:
         if sku not in GOODS:
             return 0
         offer = GOODS[sku]["offer"]
-        nb_items_offered, value = 0, 0
+        nb_items_offered, value, total = 0, 0, 0
         if offer:
             split_offer = offer.split(" for ")
             nb_items_offered = int(split_offer[0][:-1])
             value = int(split_offer[1])
-
-        total = len(items)
+            total = len(items)
+        else:
+            total = GOODS[sku]["price"] * len(items)
         return total
