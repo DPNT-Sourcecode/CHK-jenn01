@@ -8,4 +8,5 @@ class HelloSolution:
         elif not isinstance(friend_name, str):
             raise ValueError("Please give a friend name as a string")
         else:
-            return "Hello, " + friend_name + "!"
+            return "Hello, World!"
+

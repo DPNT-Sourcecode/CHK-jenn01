@@ -3,7 +3,7 @@ from lib.solutions.HLO.hello_solution import  HelloSolution
 
 class TestHelloSolution:
     def test_hello(self):
-        assert HelloSolution().hello("Mr. X") == "Hello, Mr. X!"
+        assert HelloSolution().hello("Mr. X") == "Hello, World!"
 
     def test_hello_with_empty_name(self):
         with pytest.raises(ValueError) as exception:
@@ -14,3 +14,4 @@ class TestHelloSolution:
         with pytest.raises(ValueError) as exception:
             HelloSolution().hello(100)
         assert str(exception.value) == "Please give a friend name as a string"
+
