@@ -15,6 +15,12 @@ GOODS['C'] = Product('C', 20, "")
 GOODS['D'] = Product('D', 15, "")
 GOODS['E'] = Product('E', 40, "2E get one B free")
 
+
+def apply_special_offers_for_new_good(items):
+    nb_new_items = items.count('E')
+    return nb_new_items % 2 == 0
+
+
 class CheckoutSolution:
 
     # skus = unicode string
@@ -43,6 +49,8 @@ class CheckoutSolution:
         if sku not in GOODS:
             return -1
         offer = GOODS[sku].offer
+        if 'E' == sku:
+            items = apply_special_offers_for_new_good(items)
         nb_items_offered, value, total = 0, 0, 0
         if offer:
             split_offer = offer.split(" for ")
