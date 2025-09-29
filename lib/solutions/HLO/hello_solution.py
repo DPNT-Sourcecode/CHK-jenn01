@@ -18,4 +18,3 @@ class HelloSolution:
             raise ValueError("Please give a friend name as a string")
         else:
             return "Hello, " + friend_name + "!"
-

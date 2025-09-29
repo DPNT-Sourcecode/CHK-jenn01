@@ -28,4 +28,3 @@ class TestHelloSolution:
 
     def test_hello_friend(self):
         assert HelloSolution().hello("Mr. X") == "Hello, Mr. X!"
-
