@@ -4,9 +4,10 @@ class Product:
     def __init__(self, sku):
         self.sku = sku
         self.price = defaultdict(int)
+        self.discount = defaultdict(str)
 
 
-
+GOODS = defaultdict(Product)
 
 
 class CheckoutSolution:
@@ -22,14 +23,14 @@ class CheckoutSolution:
         total = 0
         for group, items in group_items.items():
             print(group, items)
-            total += calculate_total(items)
+            total += self.calculate_total(items)
 
         return len(group_items)
 
 
-    def calculate_total(items):
+    def calculate_total(self, items):
         """
         Calculate the total price of a group of items.
         """
-        total = 0
+        total = len(items)
         return total
