@@ -80,7 +80,3 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
-
-
-
-
