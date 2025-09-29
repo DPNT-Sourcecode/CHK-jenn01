@@ -71,11 +71,14 @@ def calculate_total_multiple_offers(sku, offers, items):
     sorted_offers = sorted(offers, reverse=True)
     tail = items
     i = 0
-    while tail and sorted_offers[i]:
-        total, even, tail = calculate_total_single_offer(sku, sorted_offers[i],
+    total = 0
+    while tail or sorted_offers[i]:
+        _total, even, tail = calculate_total_single_offer(sku, sorted_offers[i],
                                                          items)
-
-    return 0
+        if not even:
+            i += 1
+        total += _total
+    return total
 
 
 class CheckoutSolution:
@@ -115,11 +118,3 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
-
-
-
-
-
-
-
-
