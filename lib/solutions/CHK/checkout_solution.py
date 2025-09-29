@@ -10,6 +10,9 @@ class Product:
 GOODS = defaultdict(Product)
 
 GOODS['A'] = Product('A', 20, "2A for 25")
+GOODS['B'] = Product('B', 10, "")
+GOODS['C'] = Product('C', 5, "3C for 12")
+GOODS['D'] = Product('D', 6, "5D for 25")
 
 class CheckoutSolution:
 
@@ -46,3 +49,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku]["price"] * len(items)
         return total
+
