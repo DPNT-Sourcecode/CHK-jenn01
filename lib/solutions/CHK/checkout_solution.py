@@ -30,7 +30,7 @@ class CheckoutSolution:
         group_items = defaultdict(str)
         if not skus:
             return 0
-
+        skus = apply_special_offers_for_new_good(skus)
         for sku in skus:
             if sku not in GOODS:
                 return -1
@@ -51,8 +51,6 @@ class CheckoutSolution:
         if sku not in GOODS:
             return -1
         offer = GOODS[sku].offer
-        if 'E' == sku:
-            items = apply_special_offers_for_new_good(items)
         nb_items_offered, value, total = 0, 0, 0
         if offer:
             split_offer = offer.split(" for ")
@@ -68,4 +66,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
