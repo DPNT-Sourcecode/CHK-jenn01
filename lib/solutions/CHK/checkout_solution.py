@@ -52,8 +52,10 @@ def calculate_total_single_offer(sku, offer, items):
     nb_items_offered, value = extract_offer_cost(offer)
     pairings = split_skus(items, nb_items_offered)
     total = sum([value for i in range(0, len(pairings)-1)])
-    if len(pairings[-1]) < nb_items_offered:
-        total += len(pairings[-1]) * GOODS[sku].price
+    last_pairing = pairings[-1]
+    even = False
+    if len(last_pairing) < nb_items_offered:
+        total += len(last_pairing) * GOODS[sku].price
     else:
         total += value
     return total
@@ -66,7 +68,7 @@ def calculate_total_multiple_offers(sku, offers, items):
     """
     offers = offers.split(", ")
     sorted_offers = sorted(offers, reverse=True)
-    for offer in offers:
+    for offer in sorted_offers:
         pass
     return 0
 
@@ -108,6 +110,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
