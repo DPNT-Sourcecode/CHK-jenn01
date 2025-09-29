@@ -65,6 +65,7 @@ def calculate_total_multiple_offers(sku, offers, items):
     Presumably, we have only product having multiple offers.
     """
     offers = offers.split(", ")
+    sorted_offers = sorted(offers, reverse=True)
     for offer in offers:
         pass
     return 0
@@ -107,6 +108,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
