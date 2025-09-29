@@ -9,10 +9,10 @@ class Product:
 
 GOODS = defaultdict(Product)
 
-GOODS['A'] = Product('A', 20, "2A for 25")
-GOODS['B'] = Product('B', 10, "")
-GOODS['C'] = Product('C', 5, "3C for 12")
-GOODS['D'] = Product('D', 6, "5D for 25")
+GOODS['A'] = Product('A', 50, "3A for 130")
+GOODS['B'] = Product('B', 30, "2B for 45")
+GOODS['C'] = Product('C', 20, "")
+GOODS['D'] = Product('D', 15, "")
 
 class CheckoutSolution:
 
@@ -38,7 +38,7 @@ class CheckoutSolution:
         """
 
         if sku not in GOODS:
-            return 0
+            return -1
         offer = GOODS[sku].offer
         nb_items_offered, value, total = 0, 0, 0
         if offer:
