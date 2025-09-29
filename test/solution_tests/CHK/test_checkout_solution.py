@@ -6,6 +6,5 @@ class TestCheckoutSolution:
         assert -1 == CheckoutSolution().checkout("")
 
     def test_checkout_solution_with_nonempty_skus(self):
-        assert CheckoutSolution().checkout("AAABACCCCCDB") == 4
-
+        assert CheckoutSolution().checkout("AAABACCCCCDB") == 50
 

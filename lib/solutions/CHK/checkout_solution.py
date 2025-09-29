@@ -29,7 +29,7 @@ class CheckoutSolution:
             # print(sku, items)
             total += self.calculate_total(sku, items)
 
-        return len(group_items)
+        return total
 
 
     def calculate_total(self, sku, items):
@@ -47,11 +47,11 @@ class CheckoutSolution:
             value = int(split_offer[1])
             pairings = [items[i:i+nb_items_offered]
                         for i in range(0, len(items), nb_items_offered)]
-            print(pairings)
-            total = len(items)
+            total += sum([value for i in range(0, len(pairings)-1)])
+            if len(pairings[-1]) < nb_items_offered:
+                total += len(pairings[-1]) * GOODS[sku].price
+            else:
+                total += value
         else:
             total = GOODS[sku].price * len(items)
         return total
-
-
-
