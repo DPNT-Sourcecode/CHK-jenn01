@@ -45,8 +45,12 @@ class CheckoutSolution:
             split_offer = offer.split(" for ")
             nb_items_offered = int(split_offer[0][:-1])
             value = int(split_offer[1])
+            pairings = [items[i:i+nb_items_offered]
+                        for i in range(0, len(items), nb_items_offered)]
+            print(pairings)
             total = len(items)
         else:
             total = GOODS[sku]["price"] * len(items)
         return total
+
 
