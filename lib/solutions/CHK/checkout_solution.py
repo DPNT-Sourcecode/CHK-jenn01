@@ -36,5 +36,9 @@ class CheckoutSolution:
         if sku not in GOODS:
             return 0
         offer = GOODS[sku]["offer"]
+        nb_items_offered, value = 0, 0
+        if offer:
+            split_offer = offer.split(" for ")
+            nb_items_offered += int(split_offer[0])
         total = len(items)
         return total
