@@ -21,8 +21,11 @@ class CheckoutSolution:
         group_items = defaultdict(str)
         if not skus:
             return 0
+
         # skus = skus.upper()
         for sku in skus:
+            if sku not in GOODS:
+                return -1
             group_items[sku] += sku
         total = 0
         for sku, items in group_items.items():
