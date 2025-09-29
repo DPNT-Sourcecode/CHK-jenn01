@@ -72,10 +72,10 @@ def calculate_total_multiple_offers(sku, offers, items):
     tail = items
     i = 0
     total = 0
-    while tail or sorted_offers[i]:
+    while tail:
         _total, even, tail = calculate_total_single_offer(sku, sorted_offers[i],
                                                          items)
-        if not even:
+        if not even and i < len(sorted_offers)-1:
             i += 1
         total += _total
     return total
