@@ -39,7 +39,7 @@ class CheckoutSolution:
 
         if sku not in GOODS:
             return 0
-        offer = GOODS[sku]["offer"]
+        offer = GOODS[sku].offer
         nb_items_offered, value, total = 0, 0, 0
         if offer:
             split_offer = offer.split(" for ")
@@ -50,7 +50,8 @@ class CheckoutSolution:
             print(pairings)
             total = len(items)
         else:
-            total = GOODS[sku]["price"] * len(items)
+            total = GOODS[sku].price * len(items)
         return total
+
 
 
