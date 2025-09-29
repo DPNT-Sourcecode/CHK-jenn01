@@ -12,5 +12,5 @@ class TestHelloSolution:
 
     def test_with_empty_not_string(self):
         with pytest.raises(ValueError) as exception:
-            HelloSolution().hello(1)
+            HelloSolution().hello(100)
         assert str(exception.value) == "Please give a friend name as a string"

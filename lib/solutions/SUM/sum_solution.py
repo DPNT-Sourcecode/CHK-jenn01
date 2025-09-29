@@ -8,5 +8,3 @@ class SumSolution:
             return x + y
         else:
             raise ValueError("Argument should be between 0 and 100")
-
-
