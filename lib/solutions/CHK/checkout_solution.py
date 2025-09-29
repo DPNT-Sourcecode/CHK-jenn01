@@ -73,13 +73,14 @@ class CheckoutSolution:
         total = 0
         if offer:
             if sku == "A":
-                total = calculate_total_multiple_offer(sku, offer, items)
+                total = calculate_total_multiple_offers(sku, offer, items)
             else:
                 total = calculate_total_single_offer(sku, offer, items)
 
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
