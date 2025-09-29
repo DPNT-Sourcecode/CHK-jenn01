@@ -16,9 +16,11 @@ GOODS['D'] = Product('D', 15, "")
 GOODS['E'] = Product('E', 40, "2E get one B free")
 
 
-def apply_special_offers_for_new_good(items):
-    nb_new_items = items.count('E')
-    return nb_new_items % 2 == 0
+def apply_special_offers_for_new_good(skus):
+    nb_new_e = skus.count('E')
+    nb_rewarded_b = 0 if nb_new_e else nb_new_e // 2
+    skus +=  "B" * nb_rewarded_b
+    return skus
 
 
 class CheckoutSolution:
@@ -66,3 +68,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
