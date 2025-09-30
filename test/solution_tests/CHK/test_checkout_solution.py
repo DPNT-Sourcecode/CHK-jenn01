@@ -5,6 +5,9 @@ class TestCheckoutSolution:
     def test_checkout_solution_with_empty_skus(self):
         assert 0 == CheckoutSolution().checkout("")
 
+    def test_chk_bbb_solution(self):
+        assert 30 == CheckoutSolution().checkout("B")
+
     def test_checkout_solution_with_nonempty_skus(self):
         assert 340 == CheckoutSolution().checkout("AAABACCCCCDB")
 
