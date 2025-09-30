@@ -34,6 +34,7 @@ def apply_special_offers_for_new_good(skus):
     amount = skus.count('F')
     items_to_pay = floor(amount / 3) * 2 + amount%3
     skus = skus.replace('F', '')
+    skus += "F" * items_to_pay
     return skus
 
 
@@ -154,6 +155,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
