@@ -51,11 +51,11 @@ def do_apply_special_offer_get_one_free(skus):
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
         # e.g., 2F get one F free
         parts = GOODS[sku].offer.split(' get one ')
-        nb_bought_items = int(parts[0][:-1]) # e.g., 2E -> 2
+        n = int(parts[0][:-1]) # e.g., 2E -> 2
         free_item = parts[1][:1] # e.g., one F free
 
         amount = skus.count(sku)
-        items_to_pay = floor(amount / 3) * 2 + amount%3
+        items_to_pay = floor(amount / (n + 1)) * n + amount%(n + 1)
         skus = skus.replace(sku, '')
         skus += sku * items_to_pay
     return skus
@@ -90,6 +90,7 @@ def apply_special_offers_for_new_good(skus):
 
     # Discounted programmes like buy 3F get 1F free (buy 3 pay 2)
     skus = do_apply_special_offer_get_one_free(skus)
+
     return skus
 
 
@@ -207,5 +208,6 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
