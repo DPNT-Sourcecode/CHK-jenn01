@@ -191,7 +191,7 @@ class CheckoutSolution:
             return -1
         offer = GOODS[sku].offer
         if offer:
-            if sku in ["A", "H", "V"]:
+            if sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS']:
                 total = calculate_total_multiple_offers(sku, offer, items)
             else:
                 total, _, _ = calculate_total_single_offer(sku, offer, items)
@@ -199,3 +199,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
