@@ -43,7 +43,7 @@ DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'] = ["E", "F", "N", "R", "U"]
 DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = []
 
-def do_apply_special_offer_checkout_get_one_free(skus):
+def do_apply_special_offer_get_one_free(skus):
     # Buy n good SKU, get m free
     # For example: buy 3 pay 2
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
@@ -54,22 +54,18 @@ def do_apply_special_offer_checkout_get_one_free(skus):
     return skus
 
 
-def do_apply_special_offer_checkout_get_other_free(skus):
-    # Buy n good SKU, get m free other good
-    nb_new_e = skus.count('E')
-    nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // 2
-    # remove the nb_rewarded_b of 'B' because of the new good 'E'
-    for i in range(0, nb_rewarded_b):
-        skus = skus.replace('B', '', 1)
-
+def do_apply_special_offer_get_other_free(skus):
+    """
+    Buy n good SKU, get m free other good
+    """
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
         parts = GOODS[sku].offer.split(' get one ')
-        nb_bought_items = int(parts[0][:-1])
-        free_item = parts[1][:1]
+        nb_bought_items = int(parts[0][:-1]) # e.g., 2E -> 2
+        free_item = parts[1][:1] # e.g., B
 
         nb_new_e = skus.count(sku)
         nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // nb_bought_items
-        # remove the nb_rewarded_b of 'B' because of the new good 'E'
+        # remove the nb_rewarded_b of 'free_item'
         for i in range(0, nb_rewarded_b):
             skus = skus.replace(free_item, '', 1)
     return skus
@@ -83,10 +79,10 @@ def apply_special_offers_for_new_good(skus):
     """
 
     # Discounted programmes like buy 3F get one B free
-    skus = do_apply_special_offer_checkout_get_other_free(skus)
+    skus = do_apply_special_offer_get_other_free(skus)
 
     # Discounted programmes like buy 3F get 1F free (buy 3 pay 2)
-    skus = do_apply_special_offer_checkout_get_one_free(skus)
+    skus = do_apply_special_offer_get_one_free(skus)
     return skus
 
 
