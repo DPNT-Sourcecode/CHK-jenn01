@@ -22,7 +22,7 @@ def apply_special_offers_for_new_good(skus):
     Presumably we have the new product E as provided
     """
     nb_new_e = skus.count('E')
-    nb_rewarded_b = 0 if nb_new_e else nb_new_e // 2
+    nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // 2
     skus +=  "B" * nb_rewarded_b
     return skus
 
@@ -128,3 +128,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
