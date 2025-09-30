@@ -47,11 +47,11 @@ class TestCheckoutSolution(unittest.TestCase):
         # ("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHVVVBBNNNMFFFKKQQQVVHHHHH", 1640),
         # ('A', 50),
         ('ZZZS', 65),
-        # ('STXS', 62),
-        # ('STXZ', 62),
-        # ('ASTXYZ', 135),
-        # ('AASTXYZ', 185),
-        # ('AASTTXYZSTXYZ', 275),
+        ('STXS', 62),
+        ('STXZ', 62),
+        ('ASTXYZ', 132),
+        ('AASTXYZ', 182),
+        ('AASTTXYZSTXYZ', 269),
     ])
     def test_checkout_solution_with_new_goods(self, test_input, expected):
         self.assertEqual(CheckoutSolution().checkout(test_input), expected)
