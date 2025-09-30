@@ -212,7 +212,7 @@ class CheckoutSolution:
         group_discount = []
         for sku, items in group_items.items():
             # print(sku, items)
-            if sku not in DISCOUNTED_PRODUCTS['BUY_ANY_OF']:
+            if sku in DISCOUNTED_PRODUCTS['BUY_ANY_OF']:
                 group_discount.append(group_items[sku])
             else:
                 total += self.calculate_total(sku, items)
