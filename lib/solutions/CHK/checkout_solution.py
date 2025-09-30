@@ -151,6 +151,8 @@ def calculate_total_single_offer(sku, offer, items):
         last_pairing = ""
     return total, even, last_pairing
 
+def sort_multiple_offers(lst_offers):
+
 
 def calculate_total_multiple_offers(sku, offers, items):
     """
@@ -217,8 +219,3 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
-
-
-
-
-
