@@ -56,6 +56,8 @@ def do_apply_special_offer_checkout_get_one_free(skus):
 def do_apply_special_offer_checkout_get_other_free(skus):
     # Buy n good SKU, get m free other good
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
+        parts = GOODS[sku].offer.split(' get one ')
+        
         nb_new_e = skus.count(sku)
         nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // 2
         # remove the nb_rewarded_b of 'B' because of the new good 'E'
@@ -195,6 +197,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
