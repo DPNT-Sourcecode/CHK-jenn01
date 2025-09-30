@@ -243,7 +243,3 @@ class CheckoutSolution:
 
     def calculate_total_group_discount(self, sku, group_discount):
         return 1
-
-
-
-
