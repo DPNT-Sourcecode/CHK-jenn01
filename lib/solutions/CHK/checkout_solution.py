@@ -1,5 +1,6 @@
 from collections import defaultdict
 from math import floor
+from xmlrpc.client import Boolean
 
 
 class Product:
@@ -65,6 +66,8 @@ def do_apply_special_offer_get_other_free(skus):
     """
     Buy n good SKU, get m free other good
     """
+    USED_OFFERS = defaultdict()
+    for p in 
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
         parts = GOODS[sku].offer.split(' get one ')
         nb_bought_items = int(parts[0][:-1]) # e.g., 2E -> 2
@@ -208,6 +211,3 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
-
-
-
