@@ -27,14 +27,19 @@ def apply_special_offers_for_new_good(skus):
     return skus
 
 
-def extract_offer_cost(offer):
+def extract_offer_cost(sku, offer):
     """
     Split offers into two parts.
     """
     nb_items_offered, value = 0, 0
-    split_offer = offer.split(" for ")
-    nb_items_offered = int(split_offer[0][:-1])
-    value = int(split_offer[1])
+    if sku == "E":
+        nb_items_offered = 1
+        value = 40
+    else:
+        split_offer = offer.split(" for ")
+        nb_items_offered = int(split_offer[0][:-1])
+        value = int(split_offer[1])
+
     return nb_items_offered, value
 
 def split_skus(skus, size):
@@ -49,7 +54,7 @@ def calculate_total_single_offer(sku, offer, items):
     """
     Calculate the total price of a single offer
     """
-    nb_items_offered, value = extract_offer_cost(offer)
+    nb_items_offered, value = extract_offer_cost(sku, offer)
     pairings = split_skus(items, nb_items_offered)
     total = sum([value for i in range(0, len(pairings)-1)])
     last_pairing = pairings[-1]
@@ -76,7 +81,8 @@ def calculate_total_multiple_offers(sku, offers, items):
     i = 0
     total = 0
     while tail:
-        if len(items) < extract_offer_cost(sorted_offers[i])[0] and i < len(sorted_offers) - 1:
+        if (len(items) < extract_offer_cost(sku, sorted_offers[i])[0] and i <
+                len(sorted_offers) - 1):
             i += 1
         else:
             _total, even, tail = calculate_total_single_offer(sku, sorted_offers[i], items)
