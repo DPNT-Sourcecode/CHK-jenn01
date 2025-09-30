@@ -59,6 +59,8 @@ def calculate_total_single_offer(sku, offer, items):
     else:
         even = True
         total += value
+    if last_pairing == items:
+        last_pairing = ""
     return total, even, last_pairing
 
 
@@ -119,6 +121,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
