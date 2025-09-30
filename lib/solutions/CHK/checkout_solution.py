@@ -196,25 +196,25 @@ def calculate_total_multiple_offers(sku, offers, items):
     return total
 
 
-    def sort_products_by_price(product_list):
-        """
-        Sorts a list of products (represented as [name, price] lists)
-        in descending order based on their price.
+def sort_products_by_price(product_list):
+    """
+    Sorts a list of products (represented as [name, price] lists)
+    in descending order based on their price.
 
-        Args:
-            product_list (list): A list where each element is a list
-                                 [product_name (str), price (int/float)].
+    Args:
+        product_list (list): A list where each element is a list
+                             [product_name (str), price (int/float)].
 
-        Returns:
-            list: The sorted list of products.
-        """
+    Returns:
+        list: The sorted list of products.
+    """
     # We use the 'sorted()' function with a lambda function for the key.
     # lambda item: item[1] tells Python to use the element at index 1 (the price)
     # for comparison.
     # reverse=True ensures the order is descending (highest price first).
     sorted_list = sorted(
         product_list,
-        key=lambda item: item[1],
+        key=lambda item: GOODS[item].price,
         reverse=True
     )
     return sorted_list
@@ -266,7 +266,7 @@ class CheckoutSolution:
         return total
 
     def calculate_total_group_discount(self, group_discount):
-        group_discount = sort_descending_by_price(group_discount)
+        group_discount = sort_products_by_price(group_discount)
         nb_groups_of_three = len(group_discount)//3
         total = nb_groups_of_three * 45
         remainder = len(group_discount) % 3
@@ -275,7 +275,3 @@ class CheckoutSolution:
             if sku in GOODS:
                 total += GOODS[sku].price
         return total
-
-
-
-
