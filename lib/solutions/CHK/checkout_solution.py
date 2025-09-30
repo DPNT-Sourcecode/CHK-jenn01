@@ -151,8 +151,22 @@ def calculate_total_single_offer(sku, offer, items):
         last_pairing = ""
     return total, even, last_pairing
 
-def sort_multiple_offers(lst_offers):
+def sort_multiple_offers(offers_lst):
+    """
+    Sorts a list of offer strings in descending order based on the
+    numeric value of the first word (the hours).
 
+    The key extraction logic:
+    1. s.split()[0]: Gets the first word (e.g., "5H", "10H").
+    2. [:-1]: Removes the last character ('H').
+    3. int(...): Converts the resulting string ("5", "10") to an integer for comparison.
+    """
+    sorted_list = sorted(
+        offers_lst,
+        key=lambda s: int(s.split()[0][:-1]),
+        reverse=True
+    )
+    return sorted_list
 
 def calculate_total_multiple_offers(sku, offers, items):
     """
@@ -160,7 +174,7 @@ def calculate_total_multiple_offers(sku, offers, items):
     Presumably, we have only product having multiple offers.
     """
     offers = offers.split(", ")
-    sorted_offers = sorted(offers, reverse=True)
+    sorted_offers = sort_multiple_offers(offers)
     tail = items
     i = 0
     total = 0
