@@ -209,11 +209,11 @@ class CheckoutSolution:
                 return -1
             group_items[sku] += sku
         total = 0
-        group_discount = []
+        group_discount = ""
         for sku, items in group_items.items():
             # print(sku, items)
             if sku in DISCOUNTED_PRODUCTS['BUY_ANY_OF']:
-                group_discount.append(group_items[sku])
+                group_discount += group_items[sku]
             else:
                 total += self.calculate_total(sku, items)
         if group_discount:
@@ -244,11 +244,12 @@ class CheckoutSolution:
     def calculate_total_group_discount(self, group_discount):
         nb_groups_of_three = len(group_discount)//3
         total = nb_groups_of_three * 45
-        remainder = nb_groups_of_three % 3
+        remainder = len(group_discount) % 3
         remaining_items = group_discount[:remainder]
         for sku in remaining_items:
             if sku in GOODS:
                 total += GOODS[sku].price
         return total
+
 
 
