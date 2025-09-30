@@ -53,8 +53,16 @@ def do_apply_special_offer_checkout_get_one_free(skus):
         skus += sku * items_to_pay
     return skus
 
+
+
 def do_apply_special_offer_checkout_get_other_free(skus):
     # Buy n good SKU, get m free other good
+    nb_new_e = skus.count('E')
+    nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // 2
+    # remove the nb_rewarded_b of 'B' because of the new good 'E'
+    for i in range(0, nb_rewarded_b):
+        skus = skus.replace('B', '', 1)
+
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
         parts = GOODS[sku].offer.split(' get one ')
         nb_bought_items = int(parts[0][:-1])
@@ -65,7 +73,7 @@ def do_apply_special_offer_checkout_get_other_free(skus):
         # remove the nb_rewarded_b of 'B' because of the new good 'E'
         for i in range(0, nb_rewarded_b):
             skus = skus.replace(free_item, '', 1)
-    pass
+    return skus
 
 
 def apply_special_offers_for_new_good(skus):
@@ -74,11 +82,7 @@ def apply_special_offers_for_new_good(skus):
     Presumably we have the new product E as provided. Now we have new F.
     2F free 1F, get 3 but pay 2
     """
-    nb_new_e = skus.count('E')
-    nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // 2
-    # remove the nb_rewarded_b of 'B' because of the new good 'E'
-    for i in range(0, nb_rewarded_b):
-        skus = skus.replace('B', '', 1)
+    skus = do_apply_special_offer_checkout_get_other_free(skus)
 
     # Discounted programmes like buy 3 pay 2
     skus = do_apply_special_offer_checkout_get_one_free(skus)
@@ -199,6 +203,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
