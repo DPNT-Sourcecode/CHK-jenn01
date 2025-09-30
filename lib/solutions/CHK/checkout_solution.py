@@ -82,6 +82,8 @@ def apply_special_offers_for_new_good(skus):
     Presumably we have the new product E as provided. Now we have new F.
     2F free 1F, get 3 but pay 2
     """
+
+    # Discounted programmes like buy 3F get one B free
     skus = do_apply_special_offer_checkout_get_other_free(skus)
 
     # Discounted programmes like buy 3 pay 2
@@ -203,6 +205,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
