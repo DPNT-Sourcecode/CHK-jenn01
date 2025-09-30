@@ -217,7 +217,7 @@ class CheckoutSolution:
             else:
                 total += self.calculate_total(sku, items)
         if group_discount:
-            total += self.calculate_total_group_discount(sku, group_discount)
+            total += self.calculate_total_group_discount(group_discount)
 
         return total
 
@@ -241,7 +241,7 @@ class CheckoutSolution:
             total = GOODS[sku].price * len(items)
         return total
 
-    def calculate_total_group_discount(self, sku, group_discount):
+    def calculate_total_group_discount(self, group_discount):
         nb_groups_of_three = len(group_discount)//3
         total = nb_groups_of_three * 45
         remainder = nb_groups_of_three % 3
@@ -250,4 +250,5 @@ class CheckoutSolution:
             if sku in GOODS:
                 total += GOODS[sku].price
         return total
+
 
