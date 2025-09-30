@@ -277,6 +277,3 @@ class CheckoutSolution:
             if sku in GOODS:
                 total += GOODS[sku].price
         return total
-
-
-
