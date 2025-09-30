@@ -24,13 +24,13 @@ class TestCheckoutSolution(unittest.TestCase):
         # ("EE", 80),
         # ("EEB", 80),
         # ("EEEB", 120),
-        ("EEEEBB", 160),
+        # ("EEEEBB", 160),
         # ("BEBEEE", 160),
         # ("AAABACCCCCDB", 340),
         # ("AAAABBCCCCCDEEE", 445),
         # ("AAAABBCCCCCDEEEE", 455),
         # ("F", 10),
-        # ("FF", 20),
+        ("FF", 20),
         # ("FFF", 20),
         # ("AAFFF", 120),
         # ("AAFFFF", 130),
@@ -49,3 +49,4 @@ class TestCheckoutSolution(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

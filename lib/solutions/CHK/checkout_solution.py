@@ -66,7 +66,7 @@ def do_apply_special_offer_get_one_free(skus, USED_OFFERS):
     return skus
 
 
-def do_apply_special_offer_get_other_free(skus, USE_OFFERS):
+def do_apply_special_offer_get_other_free(skus, USED_OFFERS):
     """
     Buy n good SKU, get m free other good
     """
@@ -217,4 +217,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
