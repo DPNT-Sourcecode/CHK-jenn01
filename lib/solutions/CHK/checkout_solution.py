@@ -84,11 +84,11 @@ def calculate_total_multiple_offers(sku, offers, items):
         offer = sorted_offers[i]
         nb, value = extract_offer_cost(sku, offer)
         while tail:
-            block = items[:nb]
+            block = tail[:nb]
             if len(block) == nb:
                 # found a block of the size nb
                 total += value
-                tail = items[nb:]
+                tail = tail[nb:]
             else:
                 i += 1
                 break
@@ -140,6 +140,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
