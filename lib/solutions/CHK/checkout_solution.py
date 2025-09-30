@@ -17,6 +17,26 @@ GOODS['C'] = Product('C', 20, "")
 GOODS['D'] = Product('D', 15, "")
 GOODS['E'] = Product('E', 40, "2E get one B free")
 GOODS['F'] = Product('F', 10, "2F get one F free")
+GOODS['G'] = Product('G', 20, "")
+GOODS['H'] = Product('H', 10, "5H for 45, 10H for 80")
+GOODS['I'] = Product('I', 35, "")
+GOODS['J'] = Product('J', 60, "")
+GOODS['K'] = Product('J', 60, "")
+GOODS['L'] = Product('J', 60, "")
+GOODS['M'] = Product('J', 60, "")
+GOODS['N'] = Product('J', 60, "")
+GOODS['O'] = Product('J', 60, "")
+GOODS['P'] = Product('J', 60, "")
+GOODS['Q'] = Product('J', 60, "")
+GOODS['R'] = Product('J', 60, "")
+GOODS['S'] = Product('J', 60, "")
+GOODS['T'] = Product('J', 60, "")
+GOODS['U'] = Product('J', 60, "")
+GOODS['V'] = Product('J', 60, "")
+GOODS['W'] = Product('J', 60, "")
+GOODS['X'] = Product('X', 90, "")
+GOODS['Y'] = Product('Y', 10, "")
+GOODS['Z'] = Product('Z', 50, "")
 
 
 def apply_special_offers_for_new_good(skus):
@@ -155,7 +175,3 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
-
-
-
-
