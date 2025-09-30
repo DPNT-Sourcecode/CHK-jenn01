@@ -167,7 +167,7 @@ class CheckoutSolution:
             return -1
         offer = GOODS[sku].offer
         if offer:
-            if sku in ["A", "H"]:
+            if sku in ["A", "H", "V"]:
                 total = calculate_total_multiple_offers(sku, offer, items)
             else:
                 total, _, _ = calculate_total_single_offer(sku, offer, items)
@@ -175,4 +175,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 

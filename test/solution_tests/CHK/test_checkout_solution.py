@@ -35,10 +35,18 @@ class TestCheckoutSolution(unittest.TestCase):
         # ("AAFFF", 120),
         # ("AAFFFF", 130),
         # ("AAFFFFF", 140),
-        ("H", 10),
+        ("HHH", 30),
+        ("HHHHH", 45),
+        ("HHHHHH", 55),
+        ("HHHHHHHHH", 85),
+        ("HHHHHHHHHH", 90),
+        ("AAAHHHHHHHHHH", 220),
+        ("V", 50),
+        ("VV", 90),
     ])
     def test_checkout_solution_with_new_goods(self, test_input, expected):
         self.assertEqual(CheckoutSolution().checkout(test_input), expected)
 
 if __name__ == '__main__':
     unittest.main()
+
