@@ -46,7 +46,8 @@ class TestCheckoutSolution(unittest.TestCase):
         # ("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ", 1880),
         # ("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHVVVBBNNNMFFFKKQQQVVHHHHH", 1640),
         # ('A', 50),
-        ('ZZZS', 65),
+        ('STX', 45),
+        ('STXSTX', 90),
         ('STXS', 62),
         ('STXZ', 62),
         ('ASTXYZ', 132),
@@ -58,3 +59,4 @@ class TestCheckoutSolution(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
