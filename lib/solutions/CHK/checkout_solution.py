@@ -44,15 +44,16 @@ DISCOUNTED_PRODUCTS = defaultdict(Product)
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'] = ["E", "F", "N", "R", "U"]
 DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = []
-USED_OFFERS = dict.fromkeys(GOODS, False)
 
-def do_apply_special_offer_get_one_free(skus):
+def do_apply_special_offer_get_one_free(skus, USED_OFFERS):
     """
     Buy n good SKU, get m good SKU free (the same product)
     """
     # For example: buy 3 pay 2
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
         # e.g., 2F get one F free
+        if USED_OFFERS[sku]:
+            continue
         USED_OFFERS[sku] = True
         parts = GOODS[sku].offer.split(' get one ')
         n = int(parts[0][:-1]) # e.g., 2E -> 2
@@ -65,11 +66,13 @@ def do_apply_special_offer_get_one_free(skus):
     return skus
 
 
-def do_apply_special_offer_get_other_free(skus):
+def do_apply_special_offer_get_other_free(skus, USE_OFFERS):
     """
     Buy n good SKU, get m free other good
     """
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
+        if USED_OFFERS[sku]:
+            continue
         USED_OFFERS[sku] = True
         parts = GOODS[sku].offer.split(' get one ')
         nb_bought_items = int(parts[0][:-1]) # e.g., 2E -> 2
@@ -89,12 +92,13 @@ def apply_special_offers_for_new_good(skus):
     Presumably we have the new product E as provided. Now we have new F.
     2F free 1F, get 3 but pay 2
     """
+    USED_OFFERS = dict.fromkeys(GOODS, False)
 
     # Discounted programmes like buy 3F get one B free
-    skus = do_apply_special_offer_get_other_free(skus)
+    skus = do_apply_special_offer_get_other_free(skus, USED_OFFERS)
 
     # Discounted programmes like buy 3F get 1F free (buy 3 pay 2)
-    skus = do_apply_special_offer_get_one_free(skus)
+    skus = do_apply_special_offer_get_one_free(skus, USED_OFFERS)
 
     return skus
 
@@ -213,3 +217,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
