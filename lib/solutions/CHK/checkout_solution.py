@@ -29,19 +29,20 @@ GOODS['O'] = Product('O', 10, "")
 GOODS['P'] = Product('P', 50, "5P for 200")
 GOODS['Q'] = Product('Q', 30, "3Q for 80")
 GOODS['R'] = Product('R', 50, "3R get one Q free")
-GOODS['S'] = Product('S', 30, "")
-GOODS['T'] = Product('T', 20, "")
+GOODS['S'] = Product('S', 30, "buy any 3 of (S,T,X,Y,Z) for 45")
+GOODS['T'] = Product('T', 20, "buy any 3 of (S,T,X,Y,Z) for 45")
 GOODS['U'] = Product('U', 40, "3U get one U free")
 GOODS['V'] = Product('V', 50, "2V for 90, 3V for 130")
 GOODS['W'] = Product('W', 20, "")
-GOODS['X'] = Product('X', 90, "")
-GOODS['Y'] = Product('Y', 10, "")
-GOODS['Z'] = Product('Z', 50, "")
+GOODS['X'] = Product('X', 90, "buy any 3 of (S,T,X,Y,Z) for 45")
+GOODS['Y'] = Product('Y', 10, "buy any 3 of (S,T,X,Y,Z) for 45")
+GOODS['Z'] = Product('Z', 50, "buy any 3 of (S,T,X,Y,Z) for 45")
 
 DISCOUNTED_PRODUCTS = defaultdict(Product)
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'] = ["E", "F", "N", "R", "U"]
 DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = []
+DISCOUNTED_PRODUCTS['BUY_ANY_OF'] = ["S", "T", "X", "Y", "Z"]
 
 def do_apply_special_offer_get_one_free(skus, USED_OFFERS):
     """
@@ -231,4 +232,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
