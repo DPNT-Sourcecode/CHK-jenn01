@@ -41,9 +41,9 @@ GOODS['Z'] = Product('Z', 50, "")
 DISCOUNTED_PRODUCTS = defaultdict(Product)
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'] = ["E", "F", "N", "R", "U"]
-DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = (list(GOODS.keys()) -
-                                            DISCOUNTED_PRODUCTS[
-                                                'BUY_MULTIPLE_PAY_LESS']) - DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS']
+DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = (list(GOODS.keys())
+    - DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS']
+    - DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'])
 
 def apply_special_offers_for_new_good(skus):
     """
