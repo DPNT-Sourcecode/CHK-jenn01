@@ -80,7 +80,8 @@ def calculate_total_multiple_offers(sku, offers, items):
     tail = items
     i = 0
     total = 0
-    while tail:
+    while tail and i < len(sorted_offers):
+        offer = sorted_offers[i]
         if (len(items) < extract_offer_cost(sku, sorted_offers[i])[0] and i <
                 len(sorted_offers) - 1):
             i += 1
