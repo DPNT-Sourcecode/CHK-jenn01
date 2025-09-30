@@ -20,7 +20,8 @@ GOODS['F'] = Product('F', 10, "2F get one F free")
 def apply_special_offers_for_new_good(skus):
     """
     Applies special offers for new skus to the list of products.
-    Presumably we have the new product E as provided
+    Presumably we have the new product E as provided. Now we have new F.
+    2F free 1F, get 3 but pay 2
     """
     nb_new_e = skus.count('E')
     nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // 2
@@ -147,3 +148,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
