@@ -270,10 +270,13 @@ class CheckoutSolution:
         nb_groups_of_three = len(group_discount)//3
         total = nb_groups_of_three * 45
         remainder = len(group_discount) % 3
-        remaining_items = group_discount[:-remainder]
+        remaining_items = ""
+        if remainder:
+            remaining_items = group_discount[-remainder:]
         for sku in remaining_items:
             if sku in GOODS:
                 total += GOODS[sku].price
         return total
+
 
 
