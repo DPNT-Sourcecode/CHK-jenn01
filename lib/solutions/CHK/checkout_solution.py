@@ -91,7 +91,7 @@ def calculate_total_multiple_offers(sku, offers, items):
                 tail = items[nb:]
             else:
                 i += 1
-                total += calculate_total_multiple_offers(sku, offer, tail)
+                break
 
         # if (len(items) < extract_offer_cost(sku, sorted_offers[i])[0] and i <
         #         len(sorted_offers) - 1):
@@ -140,5 +140,6 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
