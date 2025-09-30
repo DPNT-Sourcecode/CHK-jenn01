@@ -57,6 +57,9 @@ def calculate_total_single_offer(sku, offer, items):
     Calculate the total price of a single offer
     """
     nb_items_offered, value = extract_offer_cost(sku, offer)
+    if nb_items_offered == 1:
+        total = value * len(items)
+        return total, True, nb_items_offered
     pairings = split_skus(items, nb_items_offered)
     total = sum([value for i in range(0, len(pairings)-1)])
     last_pairing = pairings[-1]
