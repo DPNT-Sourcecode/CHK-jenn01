@@ -45,14 +45,15 @@ DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = []
 
 def do_apply_special_offer_get_one_free(skus):
     """
-    Buy n good SKU, get m free
+    Buy n good SKU, get m good SKU free (the same product)
     """
     # For example: buy 3 pay 2
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
+        # e.g., 2F get one F free
         parts = GOODS[sku].offer.split(' get one ')
         nb_bought_items = int(parts[0][:-1]) # e.g., 2E -> 2
-        free_item = parts[1][:1] # e.g., B
-        
+        free_item = parts[1][:1] # e.g., one F free
+
         amount = skus.count(sku)
         items_to_pay = floor(amount / 3) * 2 + amount%3
         skus = skus.replace(sku, '')
@@ -206,4 +207,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
