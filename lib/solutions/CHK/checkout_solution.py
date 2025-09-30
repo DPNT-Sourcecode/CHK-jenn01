@@ -84,14 +84,22 @@ def calculate_total_multiple_offers(sku, offers, items):
         offer = sorted_offers[i]
         nb, value = extract_offer_cost(sku, offer)
         while tail:
-            block = items[nb]
-        if (len(items) < extract_offer_cost(sku, sorted_offers[i])[0] and i <
-                len(sorted_offers) - 1):
-            i += 1
-        else:
-            _total, even, tail = calculate_total_single_offer(sku, sorted_offers[i], items)
-            items = tail
-            total += _total
+            block = items[:nb]
+            if len(block) == nb:
+                # found a block of the size nb
+                total += value
+                tail = items[nb:]
+            else:
+                i += 1
+                total += calculate_total_multiple_offers(sku, offer, tail)
+
+        # if (len(items) < extract_offer_cost(sku, sorted_offers[i])[0] and i <
+        #         len(sorted_offers) - 1):
+        #     i += 1
+        # else:
+        #     _total, even, tail = calculate_total_single_offer(sku, sorted_offers[i], items)
+        #     items = tail
+        #     total += _total
     return total
 
 
@@ -132,4 +140,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
