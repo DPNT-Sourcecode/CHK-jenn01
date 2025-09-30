@@ -105,7 +105,7 @@ class CheckoutSolution:
         group_items = defaultdict(str)
         if not skus:
             return 0
-        skus = apply_special_offers_for_new_good(skus)
+        # skus = apply_special_offers_for_new_good(skus)
         for sku in skus:
             if sku not in GOODS:
                 return -1
