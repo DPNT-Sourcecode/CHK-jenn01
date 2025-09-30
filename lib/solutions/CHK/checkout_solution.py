@@ -38,6 +38,8 @@ GOODS['X'] = Product('X', 90, "")
 GOODS['Y'] = Product('Y', 10, "")
 GOODS['Z'] = Product('Z', 50, "")
 
+DISCOUNTED_PROGRAMMES = defaultdict(Product)
+
 
 def apply_special_offers_for_new_good(skus):
     """
@@ -63,12 +65,9 @@ def extract_offer_cost(sku, offer):
     Split offers into two parts.
     """
     nb_items_offered, value = 0, 0
-    if sku == "E":
+    if sku in ["E", "F", "N", "R", "U"]:
         nb_items_offered = 1
-        value = 40
-    elif sku == "F":
-        nb_items_offered = 1
-        value = 10
+        value = GOODS[sku].price
     else:
         split_offer = offer.split(" for ")
         nb_items_offered = int(split_offer[0][:-1])
@@ -175,5 +174,6 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
