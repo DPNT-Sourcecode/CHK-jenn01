@@ -1,7 +1,5 @@
-import string
 from collections import defaultdict
 from math import floor
-from xmlrpc.client import Boolean
 
 
 class Product:
@@ -233,3 +231,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
