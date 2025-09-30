@@ -43,6 +43,14 @@ DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'] = ["E", "F", "N", "R", "U"]
 DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = []
 
+def do_apply_special_offer_checkout_get_one_free(offer):
+    
+    pass
+
+def do_apply_special_offer_checkout_get_other_free(offer):
+    pass
+
+
 def apply_special_offers_for_new_good(skus):
     """
     Applies special offers for new skus to the list of products.
@@ -54,6 +62,7 @@ def apply_special_offers_for_new_good(skus):
     # remove the nb_rewarded_b of 'B' because of the new good 'E'
     for i in range(0, nb_rewarded_b):
         skus = skus.replace('B', '', 1)
+
     # New good F
     amount = skus.count('F')
     items_to_pay = floor(amount / 3) * 2 + amount%3
@@ -176,4 +185,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
