@@ -37,6 +37,8 @@ def extract_offer_cost(sku, offer):
     if sku == "E":
         nb_items_offered = 1
         value = 40
+    elif sku == "F":
+        pass
     else:
         split_offer = offer.split(" for ")
         nb_items_offered = int(split_offer[0][:-1])
