@@ -14,18 +14,19 @@ class TestCheckoutSolution(unittest.TestCase):
         # ("AAAA", 180),
         # ("BBB", 75),
         # ("AAAAAAAA", 330),
-        # ("EE", 110),
+        # ("EE", 80),
         # ("EEB", 125),
         # ("AAABACCCCCDB", 340),
         # ("AAAABBCCCCCDEEE", 490),
         # ("AAAABBCCCCCDEEEE", 545)
-        ("EE", 80)
+        ("EEB", 80)
     ])
     def test_checkout_solution_with_new_goods(self, test_input, expected):
         self.assertEqual(CheckoutSolution().checkout(test_input), expected)
 
 if __name__ == '__main__':
     unittest.main()
+
 
 
 
