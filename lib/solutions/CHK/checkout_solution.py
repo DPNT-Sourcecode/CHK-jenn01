@@ -21,7 +21,7 @@ GOODS['G'] = Product('G', 20, "")
 GOODS['H'] = Product('H', 10, "5H for 45, 10H for 80")
 GOODS['I'] = Product('I', 35, "")
 GOODS['J'] = Product('J', 60, "")
-GOODS['K'] = Product('K', 80, "2K for 150")
+GOODS['K'] = Product('K', 70, "2K for 120")
 GOODS['L'] = Product('L', 90, "")
 GOODS['M'] = Product('M', 15, "")
 GOODS['N'] = Product('N', 40, "3N get one M free")
@@ -29,14 +29,14 @@ GOODS['O'] = Product('O', 10, "")
 GOODS['P'] = Product('P', 50, "5P for 200")
 GOODS['Q'] = Product('Q', 30, "3Q for 80")
 GOODS['R'] = Product('R', 50, "3R get one Q free")
-GOODS['S'] = Product('S', 30, "buy any 3 of (S,T,X,Y,Z) for 45")
+GOODS['S'] = Product('S', 20, "buy any 3 of (S,T,X,Y,Z) for 45")
 GOODS['T'] = Product('T', 20, "buy any 3 of (S,T,X,Y,Z) for 45")
 GOODS['U'] = Product('U', 40, "3U get one U free")
 GOODS['V'] = Product('V', 50, "2V for 90, 3V for 130")
 GOODS['W'] = Product('W', 20, "")
-GOODS['X'] = Product('X', 90, "buy any 3 of (S,T,X,Y,Z) for 45")
-GOODS['Y'] = Product('Y', 10, "buy any 3 of (S,T,X,Y,Z) for 45")
-GOODS['Z'] = Product('Z', 50, "buy any 3 of (S,T,X,Y,Z) for 45")
+GOODS['X'] = Product('X', 17, "buy any 3 of (S,T,X,Y,Z) for 45")
+GOODS['Y'] = Product('Y', 20, "buy any 3 of (S,T,X,Y,Z) for 45")
+GOODS['Z'] = Product('Z', 21, "buy any 3 of (S,T,X,Y,Z) for 45")
 
 DISCOUNTED_PRODUCTS = defaultdict(Product)
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
@@ -233,6 +233,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
