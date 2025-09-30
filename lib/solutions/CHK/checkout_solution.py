@@ -23,7 +23,8 @@ def apply_special_offers_for_new_good(skus):
     """
     nb_new_e = skus.count('E')
     nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // 2
-    skus +=  "B" * nb_rewarded_b
+    # remove the nb_rewarded_b of 'B' because of the new good 'E'
+    
     return skus
 
 
@@ -105,7 +106,7 @@ class CheckoutSolution:
         group_items = defaultdict(str)
         if not skus:
             return 0
-        # skus = apply_special_offers_for_new_good(skus)
+        skus = apply_special_offers_for_new_good(skus)
         for sku in skus:
             if sku not in GOODS:
                 return -1
@@ -135,3 +136,4 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
