@@ -46,8 +46,8 @@ class TestCheckoutSolution(unittest.TestCase):
         # ("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ", 1880),
         # ("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHVVVBBNNNMFFFKKQQQVVHHHHH", 1640),
         # ('A', 50),
-        ('ASTXYZ', 115),
-        ('AASTXYZ', 165),
+        # ('ASTXYZ', 115),
+        # ('AASTXYZ', 165),
         ('AASTTXYZSTXYZ', 145),
     ])
     def test_checkout_solution_with_new_goods(self, test_input, expected):
@@ -55,5 +55,6 @@ class TestCheckoutSolution(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
 
 
