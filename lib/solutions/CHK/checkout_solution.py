@@ -1,4 +1,6 @@
 from collections import defaultdict
+from math import floor
+
 
 class Product:
     def __init__(self, sku, price, offer):
@@ -28,6 +30,9 @@ def apply_special_offers_for_new_good(skus):
     # remove the nb_rewarded_b of 'B' because of the new good 'E'
     for i in range(0, nb_rewarded_b):
         skus = skus.replace('B', '', 1)
+    # New good F
+    amount = skus.count('F')
+    items_to_pay = floor(amount / 3) * 2 + amount%3
     return skus
 
 
@@ -148,4 +153,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
