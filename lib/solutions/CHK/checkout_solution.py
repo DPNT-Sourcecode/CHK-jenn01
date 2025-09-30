@@ -54,7 +54,6 @@ def do_apply_special_offer_checkout_get_one_free(skus):
     return skus
 
 
-
 def do_apply_special_offer_checkout_get_other_free(skus):
     # Buy n good SKU, get m free other good
     nb_new_e = skus.count('E')
@@ -205,6 +204,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
