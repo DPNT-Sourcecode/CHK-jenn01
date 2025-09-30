@@ -64,7 +64,7 @@ def calculate_total_single_offer(sku, offer, items):
     if len(last_pairing) < nb_items_offered:
         total += len(last_pairing) * GOODS[sku].price
         last_pairing = ""
-    else:
+    elif nb_items_offered > 1:
         even = True
         total += value
     if last_pairing == items:
