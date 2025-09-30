@@ -90,7 +90,7 @@ def extract_offer_cost(sku, offer):
     Split offers into two parts.
     """
     nb_items_offered, value = 0, 0
-    if sku in ["E", "F", "N", "R", "U"]:
+    if sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
         nb_items_offered = 1
         value = GOODS[sku].price
     else:
@@ -199,4 +199,5 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
