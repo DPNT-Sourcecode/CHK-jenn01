@@ -58,11 +58,11 @@ def do_apply_special_offer_get_one_free(skus, USED_OFFERS):
         parts = GOODS[sku].offer.split(' get one ')
         n = int(parts[0][:-1]) # e.g., 2E -> 2
         free_item = parts[1][:1] # e.g., one F free
-
-        amount = skus.count(sku)
-        items_to_pay = floor(amount / (n + 1)) * n + amount%(n + 1)
-        skus = skus.replace(sku, '')
-        skus += sku * items_to_pay
+        if free_item == sku:
+            amount = skus.count(sku)
+            items_to_pay = floor(amount / (n + 1)) * n + amount%(n + 1)
+            skus = skus.replace(sku, '')
+            skus += sku * items_to_pay
     return skus
 
 
@@ -77,7 +77,7 @@ def do_apply_special_offer_get_other_free(skus, USED_OFFERS):
         parts = GOODS[sku].offer.split(' get one ')
         nb_bought_items = int(parts[0][:-1]) # e.g., 2E -> 2
         free_item = parts[1][:1] # e.g., B
-        if free_item == sku:
+        if free_item != sku:
             nb_new_e = skus.count(sku)
             nb_rewarded_b = 0 if nb_new_e <= 0 else nb_new_e // nb_bought_items
             # remove the nb_rewarded_b of 'free_item'
@@ -217,6 +217,7 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
 
