@@ -9,9 +9,10 @@ class TestCheckoutSolution:
         assert 340 == CheckoutSolution().checkout("AAABACCCCCDB")
 
     def test_checkout_solution_with_new_goods(self):
-        assert 490 == CheckoutSolution().checkout("AAABACEEECCCCDB")
+        assert 490 == CheckoutSolution().checkout("AAAABBCCCCCDEEE")
 
     def test_checkout_solution_with_invalid_skus(self):
         assert 0 == CheckoutSolution().checkout("")
         assert -1 == CheckoutSolution().checkout("a")
         assert -1 == CheckoutSolution().checkout("ABCa")
+
