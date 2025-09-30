@@ -1,3 +1,4 @@
+import string
 from collections import defaultdict
 from math import floor
 from xmlrpc.client import Boolean
@@ -43,6 +44,7 @@ DISCOUNTED_PRODUCTS = defaultdict(Product)
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'] = ["E", "F", "N", "R", "U"]
 DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = []
+USED_OFFERS = dict.fromkeys(GOODS, False)
 
 def do_apply_special_offer_get_one_free(skus):
     """
@@ -51,6 +53,7 @@ def do_apply_special_offer_get_one_free(skus):
     # For example: buy 3 pay 2
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
         # e.g., 2F get one F free
+        USED_OFFERS[sku] = True
         parts = GOODS[sku].offer.split(' get one ')
         n = int(parts[0][:-1]) # e.g., 2E -> 2
         free_item = parts[1][:1] # e.g., one F free
@@ -66,9 +69,8 @@ def do_apply_special_offer_get_other_free(skus):
     """
     Buy n good SKU, get m free other good
     """
-    USED_OFFERS = defaultdict()
-    for p in 
     for sku in DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE']:
+        USED_OFFERS[sku] = True
         parts = GOODS[sku].offer.split(' get one ')
         nb_bought_items = int(parts[0][:-1]) # e.g., 2E -> 2
         free_item = parts[1][:1] # e.g., B
