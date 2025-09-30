@@ -14,6 +14,7 @@ GOODS['B'] = Product('B', 30, "2B for 45")
 GOODS['C'] = Product('C', 20, "")
 GOODS['D'] = Product('D', 15, "")
 GOODS['E'] = Product('E', 40, "2E get one B free")
+GOODS['F'] = Product('F', 10, "2F get one F free")
 
 
 def apply_special_offers_for_new_good(skus):
@@ -38,7 +39,8 @@ def extract_offer_cost(sku, offer):
         nb_items_offered = 1
         value = 40
     elif sku == "F":
-        pass
+        nb_items_offered = 1
+        value = 10
     else:
         split_offer = offer.split(" for ")
         nb_items_offered = int(split_offer[0][:-1])
