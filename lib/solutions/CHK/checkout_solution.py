@@ -43,9 +43,14 @@ DISCOUNTED_PRODUCTS['BUY_MULTIPLE_PAY_LESS'] = ["A", "H", "V"]
 DISCOUNTED_PRODUCTS['BUY_MULTIPLE_GET_FREE'] = ["E", "F", "N", "R", "U"]
 DISCOUNTED_PRODUCTS['BUY_MORE_PAY_LESS'] = []
 
-def do_apply_special_offer_checkout_get_one_free(offer):
-    
-    pass
+def do_apply_special_offer_checkout_get_one_free(skus, sku):
+    # Buy n good SKU, get m free
+    # For example: buy 3 pay 2
+    amount = skus.count(sku)
+    items_to_pay = floor(amount / 3) * 2 + amount%3
+    skus = skus.replace(sku, '')
+    skus += sku * items_to_pay
+    return skus
 
 def do_apply_special_offer_checkout_get_other_free(offer):
     pass
@@ -185,5 +190,6 @@ class CheckoutSolution:
         else:
             total = GOODS[sku].price * len(items)
         return total
+
 
 
