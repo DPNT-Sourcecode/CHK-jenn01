@@ -14,6 +14,7 @@ class TestCheckoutSolution(unittest.TestCase):
         ("AAAA", 180),
         ("BBB", 75),
         ("AAAAAAAA", 330),
+        ("EEB", 125),
         ("AAABACCCCCDB", 340),
         ("AAAABBCCCCCDEEE", 490),
         ("AAAABBCCCCCDEEEE", 545)
